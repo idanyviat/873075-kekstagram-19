@@ -40,7 +40,7 @@ var generateComments = function () {
 
 var renderPhoto = function (photoData) {
   var generateImage = photoTemplate.cloneNode(true);
-  generateImage.querySelector('.picture').src = photoData.url;
+  generateImage.querySelector('.picture__img').src = photoData.url;
   generateImage.querySelector('.picture__likes').textContent = photoData.likes;
   generateImage.querySelector('.picture__comments').textContent = photoData.comments;
   return generateImage;
