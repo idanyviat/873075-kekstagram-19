@@ -5,7 +5,8 @@ var photoTemplate = document.querySelector('#picture').content.querySelector('.p
 var photoList = document.querySelector('.pictures');
 
 var getRandomArbitrary = function (min, max) {
-  return Math.random() * (max - min) + min;
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min)) + min;
 };
 
 var getRandomFromArray = function (arr) {
