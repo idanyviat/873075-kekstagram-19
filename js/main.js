@@ -1,11 +1,11 @@
 'use strict';
 var PHOTOS_AMUNT = 25;
-var BODY_ADD = document.querySelector('body');
 var COMMENT_MESSAGE = ['Всё отлично!', 'В целом всё неплохо. Но не всё.', 'Когда вы делаете фотографию, хорошо бы убирать палец из кадра. В конце концов это просто непрофессионально.', 'Моя бабушка случайно чихнула с фотоаппаратом в руках и у неё получилась фотография лучше.', 'Я поскользнулся на банановой кожуре и уронил фотоаппарат на кота и у меня получилась фотография лучше.', 'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!'];
 var photoTemplate = document.querySelector('#picture').content.querySelector('.picture');
 var photoList = document.querySelector('.pictures');
 var bigphotoElement = document.querySelector('.big-picture');
 var bigphotoHidden = document.querySelector('.social__comment-count', '.comments-loader');
+var socialComments = document.querySelector('.social__comments');
 
 var getRandomArbitrary = function (min, max) {
   max = Math.floor(max);
@@ -51,7 +51,7 @@ var renderPhoto = function (photoData) {
 };
 
 var bigPhoto = function (bigphotoData) {
-  var generateImage = photoTemplate.cloneNode(true);
+  var generateImage = bigphotoElement;
   generateImage.querySelector('.big-picture__img').src = bigphotoData.url;
   generateImage.querySelector('.likes-count').textContent = bigphotoData.likes;
   generateImage.querySelector('.comments-count').textContent = bigphotoData.comments;
@@ -62,17 +62,26 @@ var craftPhoto = function (photos) {
   var fragment = document.createDocumentFragment();
   for (var i = 0; i < photos.length; i++) {
     fragment.appendChild(renderPhoto(photos[i]));
-    fragment.appendChild(bigPhoto(photos[i]));
   }
   photoList.appendChild(fragment);
+};
+
+var craftComments = function (createFragment) {
+  var commentsFragment = document.createDocumentFragment();
+  for (var i = 0; i < commentsFragment.length; i++) {
+    commentsFragment.appendChild(bigPhoto(createFragment[i]));
+  }
+  socialComments.appendChild(commentsFragment);
 };
 
 var init = function () {
   bigphotoElement.classList.remove('hidden');
   bigphotoHidden.classList.add('hidden');
-  BODY_ADD.classList.add('.modal-open');
+  document.body.classList.add('.modal-open');
   var photos = generatePhoto();
   craftPhoto(photos);
+  var commentsFragment = generateComments();
+  craftComments(commentsFragment);
 };
 
 init();
