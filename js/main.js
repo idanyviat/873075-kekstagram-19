@@ -4,8 +4,13 @@ var COMMENT_MESSAGE = ['Всё отлично!', 'В целом всё непл�
 var photoTemplate = document.querySelector('#picture').content.querySelector('.picture');
 var photoList = document.querySelector('.pictures');
 var bigphotoElement = document.querySelector('.big-picture');
+<<<<<<< HEAD
 var bigphotoHidden = document.querySelector('.social__comment-count, .comments-loader');
 
+=======
+var bigphotoHidden = document.querySelector('.social__comment-count', '.comments-loader');
+var socialComments = document.querySelector('.social__comments');
+>>>>>>> 1c6301d9f7aa87e1bcb18ebfa7e6d11d163b9c54
 
 var getRandomArbitrary = function (min, max) {
   max = Math.floor(max);
@@ -52,6 +57,7 @@ var renderPhoto = function (photoData) {
 
 var bigPhoto = function (bigphotoData) {
   var generateImage = bigphotoElement;
+<<<<<<< HEAD
   generateImage.querySelector('.big-picture__img img').src = bigphotoData.url;
   generateImage.querySelector('.likes-count').textContent = bigphotoData.likes;
   generateImage.querySelector('.social__caption').textContent = bigphotoData.deskription;
@@ -59,6 +65,11 @@ var bigPhoto = function (bigphotoData) {
   var commentsNode = craftComments(bigphotoData.comments);
   comments.innerHTML = '';
   comments.appendChild(commentsNode);
+=======
+  generateImage.querySelector('.big-picture__img').src = bigphotoData.url;
+  generateImage.querySelector('.likes-count').textContent = bigphotoData.likes;
+  generateImage.querySelector('.comments-count').textContent = bigphotoData.comments;
+>>>>>>> 1c6301d9f7aa87e1bcb18ebfa7e6d11d163b9c54
   return generateImage;
 };
 
@@ -70,6 +81,7 @@ var craftPhoto = function (photos) {
   photoList.appendChild(fragment);
 };
 
+<<<<<<< HEAD
 var craftComments = function (comments) {
   var commentsFragment = document.createDocumentFragment();
   for (var i = 0; i < comments.length; i++) {
@@ -86,6 +98,14 @@ var craftComment = function (commentData) {
   commentPicture.alt = commentData.name;
   comment.querySelector('.social__text').textContent = commentData.message;
   return comment;
+=======
+var craftComments = function (createFragment) {
+  var commentsFragment = document.createDocumentFragment();
+  for (var i = 0; i < commentsFragment.length; i++) {
+    commentsFragment.appendChild(bigPhoto(createFragment[i]));
+  }
+  socialComments.appendChild(commentsFragment);
+>>>>>>> 1c6301d9f7aa87e1bcb18ebfa7e6d11d163b9c54
 };
 
 var init = function () {
@@ -94,8 +114,13 @@ var init = function () {
   document.body.classList.add('.modal-open');
   var photos = generatePhoto();
   craftPhoto(photos);
+<<<<<<< HEAD
   bigPhoto(photos[0]);
 
+=======
+  var commentsFragment = generateComments();
+  craftComments(commentsFragment);
+>>>>>>> 1c6301d9f7aa87e1bcb18ebfa7e6d11d163b9c54
 };
 
 init();
