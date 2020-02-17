@@ -4,7 +4,11 @@ var COMMENT_MESSAGE = ['Всё отлично!', 'В целом всё непл�
 var photoTemplate = document.querySelector('#picture').content.querySelector('.picture');
 var photoList = document.querySelector('.pictures');
 var bigphotoElement = document.querySelector('.big-picture');
+var bigPhotoCancel = document.querySelector('.big-picture__cancel');
 var bigphotoHidden = document.querySelector('.social__comment-count, .comments-loader');
+var uploadFile = document.querySelector('#upload-file');
+var uploadOverlay = document.querySelector('.img-upload__overlay');
+var uploadCancel = document.querySelector('img-upload__cancel');
 
 
 var getRandomArbitrary = function (min, max) {
@@ -88,6 +92,14 @@ var craftComment = function (commentData) {
   return comment;
 };
 
+uploadFile.addEventListener('change', function () {
+  uploadOverlay.classList.remove('hidden');
+});
+
+bigPhotoCancel.addEventListener('click', function () {
+  bigphotoElement.classList.add('hidden');
+});
+
 var init = function () {
   bigphotoElement.classList.remove('hidden');
   bigphotoHidden.classList.add('hidden');
@@ -95,7 +107,6 @@ var init = function () {
   var photos = generatePhoto();
   craftPhoto(photos);
   bigPhoto(photos[0]);
-
 };
 
 init();
