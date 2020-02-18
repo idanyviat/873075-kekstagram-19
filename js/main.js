@@ -8,7 +8,6 @@ var bigPhotoCancel = document.querySelector('.big-picture__cancel');
 var bigphotoHidden = document.querySelector('.social__comment-count, .comments-loader');
 var uploadFile = document.querySelector('#upload-file');
 var uploadOverlay = document.querySelector('.img-upload__overlay');
-var uploadCancel = document.querySelector('img-upload__cancel');
 
 
 var getRandomArbitrary = function (min, max) {
