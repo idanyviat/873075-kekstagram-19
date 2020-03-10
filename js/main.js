@@ -5,6 +5,8 @@ var photoTemplate = document.querySelector('#picture').content.querySelector('.p
 var photoList = document.querySelector('.pictures');
 var bigphotoElement = document.querySelector('.big-picture');
 var bigphotoHidden = document.querySelector('.social__comment-count, .comments-loader');
+var uploadFile = document.querySelector('#upload-file');
+var uploadOverlay = document.querySelector('.img-upload__overlay');
 
 
 var getRandomArbitrary = function (min, max) {
@@ -87,6 +89,14 @@ var craftComment = function (commentData) {
   comment.querySelector('.social__text').textContent = commentData.message;
   return comment;
 };
+
+uploadFile.addEventListener('change', function () {
+  uploadOverlay.classList.remove('hidden');
+});
+
+bigPhotoCancel.addEventListener('click', function () {
+  bigphotoElement.classList.add('hidden');
+})
 
 var init = function () {
   bigphotoElement.classList.remove('hidden');
